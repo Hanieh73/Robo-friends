@@ -3,7 +3,7 @@ import CardList from '../Components/CardList'
 import SearchBox from '../Components/SearchBox'
 import Scroll from '../Components/Scroll'
 import './App.css'
-
+import ErrorBoundry from '../Components/ErrorBoundry';
 
 class App extends Component {
     constructor() {
@@ -46,7 +46,9 @@ class App extends Component {
             <h1 className='f2 animate__animated animate__bounce'>RoboFriends</h1>
                   <SearchBox searchChange={this.onSearchChange} />
                   <Scroll>
-                      <CardList robots={filterRobot} />
+                      <ErrorBoundry>
+                          <CardList robots={filterRobot} />
+                      </ErrorBoundry>
                   </Scroll>
                   <footer className='footer'>
                        <p>© 2023 RoboFriends. All rights reserved.</p>
